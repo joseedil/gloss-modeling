@@ -29,3 +29,12 @@ executable example_01_01
                      , gloss == 1.12.*
   ghc-options:         -O2 -Wall -threaded -rtsopts
   other-modules:       Ball
+
+executable example_02_01
+  hs-source-dirs:      src/chapter02/example_02_01
+  main-is:             Main.hs
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5
+                     , gloss == 1.12.*
+  ghc-options:         -O2 -Wall -threaded -rtsopts
+  other-modules:       Ball
