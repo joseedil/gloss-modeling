@@ -5,9 +5,9 @@ import Graphics.Gloss.Data.Point.Arithmetic as P
 --import Graphics.Gloss.Data.Vector
 
 data Ball = Ball
-            Vector          -- ^ Position
-            Vector          -- ^ Velocity
-            Vector          -- ^ Acceleration
+            !Vector          -- ^ Position
+            !Vector          -- ^ Velocity
+            !Vector          -- ^ Acceleration
             Float           -- ^ Mass
             deriving Show
 
