@@ -76,10 +76,10 @@ updateBall (Ball i pos speed accel r) =
   r
 
 -- | Check is the ball bounced on the border of the screen.
-checkBouncing :: Int -> Int -> Ball -> Ball
-checkBouncing dispWidth dispHeight b@(Ball i pos@(x,y) (xspeed,yspeed) accel r)
-  | ((x > fromIntegral dispWidth) || (x < 0))
-  = Ball i pos ((-1) * xspeed,yspeed) accel r
-  | ((y > fromIntegral dispHeight) || (y < 0))
-  = Ball i pos (xspeed,(-1) * yspeed) accel r
+checkBouncing :: Float -> Float -> Ball -> Ball
+checkBouncing width height b@(Ball i pos@(x,y) (xspeed,yspeed) accel r)
+  | (x > width) = Ball i (2*width-x, y) ((-1) * xspeed,yspeed) accel r
+  | (x < 0) = Ball i ((-1)*x,y) ((-1) * xspeed,yspeed) accel r
+  | (y > height) = Ball i (x, 2*height-y) (xspeed,(-1) * yspeed) accel r
+  | (y < 0) = Ball i (x,(-1)*y) (xspeed, (-1)*yspeed) accel r
   | otherwise = b

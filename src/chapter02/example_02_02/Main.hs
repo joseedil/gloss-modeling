@@ -50,7 +50,13 @@ wind = (0.01,0)
 
 -- | Move the ball.
 moveBall :: Ball -> Ball
-moveBall = (checkBouncing dispWidth dispHeight) . updateBall . (applyForce gravity) . (applyForce wind)
+moveBall =
+  (checkBouncing
+    (fromIntegral dispWidth)
+    (fromIntegral dispHeight)) .
+  updateBall .
+  (applyForce gravity) .
+  (applyForce wind)
 
 moveBalls :: ViewPort -> Float -> [Ball] -> [Ball]
 moveBalls _ _ = map moveBall
