@@ -11,10 +11,12 @@ should be sufficient. Call each example executable code through stack as well:
 
 `stack exec <demo>`
 
-in which `<demo>` is one of the demos of the following list.
+in which `<demo>** is one of the demos of the following list.
 
 ### List of available demos
 
-> gloss-preliminaries
+**gloss-preliminaries**
+Shows how to create a window and draw a static ball in it.
 
-asd
+**example_01_01**
+Creates a moving ball that bounces on the screen.
