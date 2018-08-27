@@ -3,10 +3,18 @@ Implementation of the [Nature of Code](https://natureofcode.com) book examples i
 
 ## Usage
 
-We recommend using [Stack](https://docs.haskellstack.org) to manage the package dependencies. To compile the whole project:
+I recommend using [Stack](https://docs.haskellstack.org) to manage the package dependencies. To compile the whole project:
 
 `stack build`
 
-Call each example executable code through stack as well:
+should be sufficient. Call each example executable code through stack as well:
 
-`stack exec <code>`
+`stack exec <demo>`
+
+in which `<demo>` is one of the demos of the following list.
+
+### List of available demos
+
+> gloss-preliminaries
+
+asd
