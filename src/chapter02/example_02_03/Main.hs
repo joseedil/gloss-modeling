@@ -9,7 +9,7 @@ import Ball
 
 import Graphics.Gloss
 import Graphics.Gloss.Data.ViewPort
-
+import Graphics.Gloss.Data.Vector
 
 import System.Random
 
@@ -27,10 +27,12 @@ initialMass :: [Float]
 initialMass = fst . finiteRandoms (numBalls) $ mkStdGen 0
 
 initialX :: [Float]
-initialX = map (\x -> x*(fromIntegral dispWidth)) $ fst . finiteRandoms (numBalls) $ mkStdGen 10
+initialX = map (\_ -> 0) [1..numBalls]
+--initialX = map (\x -> x*(fromIntegral dispWidth)) $ fst . finiteRandoms (numBalls) $ mkStdGen 10
 
 initialY :: [Float]
-initialY = map (\x -> x*(fromIntegral dispHeight)) $ fst . finiteRandoms (numBalls) $ mkStdGen 20
+initialY = map (\_ -> fromIntegral dispHeight) [1..numBalls]
+--initialY = map (\x -> x*(fromIntegral dispHeight)) $ fst . finiteRandoms (numBalls) $ mkStdGen 20
 
 
 -- | Ball models
@@ -43,7 +45,7 @@ balls =
 
 -- | Gravity
 gravity :: Vector
-gravity = (0,-0.1)
+gravity = (0,-0.01)
 
 -- | Wind
 wind :: Vector
@@ -51,13 +53,13 @@ wind = (0.01,0)
 
 -- | Move the ball.
 moveBall :: Ball -> Ball
-moveBall =
+moveBall b@(Ball _ _ _ _ m)=
   (checkBouncing
     (fromIntegral dispWidth)
     (fromIntegral dispHeight)) .
   updateBall .
-  (applyForce gravity) .
-  (applyForce wind)
+  (applyForce wind) .
+  (applyForce (m `mulSV` gravity)) $ b
 
 moveBalls :: ViewPort -> Float -> [Ball] -> [Ball]
 moveBalls _ _ = map moveBall
