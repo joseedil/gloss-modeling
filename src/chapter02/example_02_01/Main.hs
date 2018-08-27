@@ -10,7 +10,7 @@ import Graphics.Gloss.Data.ViewPort
 
 -- | Ball model
 ball :: Ball
-ball = Ball (30,330) (0,0) (0,0) 10
+ball = Ball (0,fromIntegral dispHeight) (0,0) (0,0) 10
 
 -- | Gravity
 gravity :: Vector
@@ -22,7 +22,7 @@ wind = (0.001,0)
 
 -- | Move the ball.
 moveBall :: ViewPort -> Float -> Ball -> Ball
-moveBall _ _ = (checkBouncing dispWidth dispHeight) . updateBall . (applyForce gravity) . (applyForce wind)
+moveBall _ _ = (checkBouncing (fromIntegral dispWidth) (fromIntegral dispHeight)) . updateBall . (applyForce gravity) . (applyForce wind)
 
 -- | Display width.
 dispWidth :: Int

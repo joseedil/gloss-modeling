@@ -1,7 +1,7 @@
 module Ball where
 
 import Graphics.Gloss
-import Graphics.Gloss.Data.Point.Arithmetic as P
+import qualified Graphics.Gloss.Data.Point.Arithmetic as P
 --import Graphics.Gloss.Data.Vector
 
 data Ball = Ball
@@ -38,10 +38,10 @@ updateBall (Ball pos speed accel r) =
   (0,0) r
 
 -- | Check is the ball bounced on the border of the screen.
-checkBouncing :: Int -> Int -> Ball -> Ball
-checkBouncing dispWidth dispHeight (Ball (x,y) (xspeed,yspeed) accel r)
-  | ((x > fromIntegral dispWidth) || (x < 0))
-  = Ball (x,y) ((-1) Prelude.* xspeed,yspeed) accel r
-  | ((y > fromIntegral dispHeight) || (y < 0))
-  = Ball (x,y) (xspeed,(-1) Prelude.* yspeed) accel r
-  | otherwise = Ball (x,y) (xspeed,yspeed) accel r
+checkBouncing :: Float -> Float -> Ball -> Ball
+checkBouncing width height b@(Ball pos@(x,y) (xspeed,yspeed) accel r)
+  | (x > width) = Ball (2*width-x, y) ((-1) * xspeed,yspeed) accel r
+  | (x < 0) = Ball ((-1)*x,y) ((-1) * xspeed,yspeed) accel r
+  | (y > height) = Ball (x, 2*height-y) (xspeed,(-1) * yspeed) accel r
+  | (y < 0) = Ball (x,(-1)*y) (xspeed, (-1)*yspeed) accel r
+  | otherwise = b
