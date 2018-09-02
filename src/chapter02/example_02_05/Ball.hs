@@ -91,7 +91,8 @@ checkLiquid
   b@(Ball i (xx,yy) vel accel m)
   | (xx > x) && (xx < x+w) && (yy > y) && (yy < y+h) =
     let
-      friction = (mulSV c) . (mulSV (-1)) . normalizeVector $ vel
+      dragMagnitude = c * (magV vel) * (magV vel)
+      friction = (mulSV dragMagnitude) . (mulSV (-1)) . normalizeVector $ vel
 
       normalizeVector v
         | magV v /= 0 = mulSV (1/magV v) v

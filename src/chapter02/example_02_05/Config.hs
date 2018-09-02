@@ -13,7 +13,7 @@ dispWidth = 640
 
 -- | Display height.
 dispHeight :: Int
-dispHeight = 720
+dispHeight = 360
 
 -- Timestep = 300 steps/sec
 simResolution :: Int

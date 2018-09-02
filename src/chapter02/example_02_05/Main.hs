@@ -46,7 +46,7 @@ balls =
 
 
 -- Liquid model --
-pool = Liquid (0,fromIntegral dispHeight/3) (fromIntegral dispWidth, (fromIntegral dispHeight)/6) 1
+pool = Liquid (0,0) (fromIntegral dispWidth, (fromIntegral dispHeight)/3) 1
 
 -- | Gravity
 gravity :: Vector
