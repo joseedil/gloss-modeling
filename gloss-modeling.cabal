@@ -19,6 +19,7 @@ executable gloss-preliminaries
   default-language:    Haskell2010
   build-depends:       base >= 4.7 && < 5
                      , gloss == 1.12.*
+                     , Yampa >= 0.12
   ghc-options:         -O2 -Wall -threaded -rtsopts
 
 executable example_01_01
